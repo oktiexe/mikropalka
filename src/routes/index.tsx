@@ -50,6 +50,13 @@ const services = [
   { icon: Smartphone, title: "Mobilne wsparcie IT", text: "Pomoc informatyczna z dojazdem do klienta w Kostrzynie nad Odrą.", code: "MOBILE_06" },
 ];
 
+const benefits = [
+  { icon: Microscope, title: "Precyzyjna praca", text: "Naprawy mikroskopowe i lutowanie małych komponentów SMD." },
+  { icon: Clock3, title: "Sprawna diagnoza", text: "Szybkie ustalenie przyczyny problemu bez zbędnej wymiany części." },
+  { icon: ShieldCheck, title: "Profesjonalne wyposażenie", text: "Narzędzia pomiarowe i serwisowe dopasowane do elektroniki." },
+  { icon: Zap, title: "Mobilna wygoda", text: "Pomoc IT z dojazdem — bez wożenia sprzętu i tracenia czasu." },
+];
+
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -159,12 +166,7 @@ function Index() {
               <p className="mt-5 max-w-md leading-7 text-muted-foreground">Nie zgadujemy. Mierzymy, lokalizujemy usterkę i jasno przedstawiamy możliwe rozwiązanie przed naprawą.</p>
             </div>
             <div className="grid gap-5 sm:grid-cols-2">
-              {[
-                [Microscope, "Precyzyjna praca", "Naprawy mikroskopowe i lutowanie małych komponentów SMD."],
-                [Clock3, "Sprawna diagnoza", "Szybkie ustalenie przyczyny problemu bez zbędnej wymiany części."],
-                [ShieldCheck, "Profesjonalne wyposażenie", "Narzędzia pomiarowe i serwisowe dopasowane do elektroniki."],
-                [Zap, "Mobilna wygoda", "Pomoc IT z dojazdem — bez wożenia sprzętu i tracenia czasu."],
-              ].map(([Icon, title, text]) => <div key={String(title)} className="border-l border-primary/40 pl-5"><Icon className="text-primary" size={22} /><h3 className="mt-4 font-display text-lg font-semibold">{String(title)}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{String(text)}</p></div>)}
+              {benefits.map(({ icon: Icon, title, text }) => <div key={title} className="border-l border-primary/40 pl-5"><Icon className="text-primary" size={22} /><h3 className="mt-4 font-display text-lg font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p></div>)}
             </div>
           </div>
         </section>
