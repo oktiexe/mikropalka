@@ -11,7 +11,7 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
         signal:
-          "bg-primary text-primary-foreground shadow-signal hover:bg-primary-bright hover:shadow-signal-strong",
+          "bg-action text-action-foreground shadow-action hover:bg-action-hover hover:shadow-action-strong",
         glass:
           "border border-border-strong bg-surface/70 text-foreground backdrop-blur-md hover:border-primary/70 hover:bg-surface-raised",
         destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
