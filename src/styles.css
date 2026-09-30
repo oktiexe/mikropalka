@@ -94,6 +94,7 @@
   --surface-raised: oklch(0.2 0.035 225 / 92%);
   --shadow-signal: 0 0 28px oklch(0.78 0.14 195 / 20%);
   --shadow-signal-strong: 0 0 36px oklch(0.78 0.14 195 / 34%);
+  --shadow-panel: 0 24px 80px oklch(0.05 0.02 230 / 55%);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -167,6 +168,7 @@
 
 @utility shadow-signal { box-shadow: var(--shadow-signal); }
 @utility shadow-signal-strong { box-shadow: var(--shadow-signal-strong); }
+@utility shadow-panel { box-shadow: var(--shadow-panel); }
 @utility tech-grid {
   background-image:
     linear-gradient(var(--border) 1px, transparent 1px),
@@ -178,4 +180,64 @@
 @media (prefers-reduced-motion: no-preference) {
   @keyframes scan { from { transform: translateY(-100%); } to { transform: translateY(100vh); } }
   .scan-line { animation: scan 7s linear infinite; }
+}
+
+@layer components {
+  .section-anchor { scroll-margin-top: 72px; }
+  .section-kicker { display: flex; align-items: center; gap: 0.65rem; font-family: var(--font-display); font-size: 0.68rem; font-weight: 600; text-transform: uppercase; color: var(--primary); }
+  .section-title { margin-top: 0.8rem; font-family: var(--font-display); font-size: clamp(2.15rem, 4vw, 3.75rem); font-weight: 700; line-height: 1.08; }
+  .status-dot { width: 0.38rem; height: 0.38rem; border-radius: 999px; background: var(--primary); box-shadow: var(--shadow-signal); }
+  .nav-link { position: relative; display: grid; height: 100%; place-items: center; padding-inline: 1rem; font-size: 0.78rem; color: var(--muted-foreground); transition: color 200ms ease; }
+  .nav-link::after { position: absolute; inset-inline: 1rem; bottom: -1px; height: 1px; content: ""; background: var(--primary); transform: scaleX(0); transition: transform 220ms ease; }
+  .nav-link:hover, .nav-link-active { color: var(--foreground); }
+  .nav-link-active::after { transform: scaleX(1); }
+  .icon-tile { display: grid; width: 3rem; height: 3rem; place-items: center; border: 1px solid var(--border-strong); border-radius: var(--radius); background: color-mix(in oklab, var(--primary) 8%, transparent); color: var(--primary); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease; }
+  .service-card { position: relative; transition: background-color 250ms ease, transform 250ms ease; }
+  .service-card:hover { z-index: 1; background: var(--surface-raised); transform: translateY(-3px); }
+  .service-card:hover .icon-tile { border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow-signal); }
+  .benefit-row { transition: padding-left 250ms ease, background-color 250ms ease; }
+  .benefit-row:hover { padding-left: 0.75rem; background: color-mix(in oklab, var(--surface) 55%, transparent); }
+  .contact-row { display: flex; min-height: 3.7rem; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border); font-size: 0.85rem; color: var(--foreground); transition: color 200ms ease, padding-left 200ms ease; }
+  a.contact-row:hover { padding-left: 0.35rem; color: var(--primary); }
+  .contact-row > svg { flex-shrink: 0; color: var(--primary); }
+  .field-label { font-size: 0.72rem; font-weight: 500; color: var(--muted-foreground); }
+  .footer-link { color: var(--muted-foreground); transition: color 200ms ease; }
+  .footer-link:hover { color: var(--primary); }
+}
+
+.circuit-field {
+  background-image:
+    linear-gradient(90deg, transparent 49.8%, var(--border) 50%, transparent 50.2%),
+    linear-gradient(transparent 49.8%, var(--border) 50%, transparent 50.2%);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
+}
+
+.hero-orbit { position: absolute; border: 1px solid var(--border-strong); transform: rotate(45deg); }
+.hero-orbit-outer { inset: 2.5rem; }
+.hero-orbit-inner { inset: 5rem; }
+.brand-logo-frame, .brand-logo-trace { stroke: var(--primary); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.brand-logo-frame { stroke-dasharray: 96; stroke-dashoffset: 96; }
+.brand-logo-trace { stroke-dasharray: 8 5; opacity: 0.52; }
+.brand-logo-symbol, .brand-logo-core { transition: transform 450ms cubic-bezier(.2,.8,.2,1), border-radius 450ms cubic-bezier(.2,.8,.2,1); }
+.brand-logo:hover .brand-logo-symbol { transform: rotate(45deg); }
+.brand-logo:hover .brand-logo-core { transform: rotate(-45deg) scale(.88); border-radius: 50%; }
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes draw-logo { to { stroke-dashoffset: 0; } }
+  @keyframes logo-enter { from { opacity: 0; transform: scale(.82) rotate(-12deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
+  @keyframes reveal-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes orbit-drift { 0%, 100% { transform: rotate(45deg) scale(1); } 50% { transform: rotate(48deg) scale(1.02); } }
+  @keyframes menu-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+  .brand-logo-frame { animation: draw-logo 900ms 100ms ease-out forwards; }
+  .brand-logo-core { animation: logo-enter 650ms ease-out both; }
+  .animate-reveal { animation: reveal-up 700ms 140ms ease-out both; }
+  .hero-orbit-outer { animation: orbit-drift 8s ease-in-out infinite; }
+  .animate-menu-in { animation: menu-in 180ms ease-out both; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .brand-logo-frame { stroke-dashoffset: 0; }
+  .brand-logo-symbol, .brand-logo-core, .service-card, .benefit-row { transition: none; }
 }
