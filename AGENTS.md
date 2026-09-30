@@ -9,5 +9,6 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Keep MikroSerwis as a single scrolling presentation with four anchored sections because the requested experience relies on fluid section-to-section navigation.
+- Keep MikroSerwis as a true four-page site at `/`, `/uslugi`, `/o-nas`, and `/kontakt`, because each main section needs its own shareable URL.
 - Use the shared BrandLogo component for all MikroSerwis identity placements so its SVG motion and geometry stay consistent.
+- Use Space Mono for headings and Rubik for body copy, with cyan as the brand color and orange reserved for primary contact actions, to preserve the chosen editorial workshop identity.
