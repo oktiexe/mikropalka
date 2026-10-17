@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Facebook, Mail, Menu, X } from "lucide-react";
+import { ArrowRight, Facebook, Mail, Menu, Phone, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
 
 import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
-import { EMAIL, FACEBOOK, navigation } from "@/lib/site";
+import { EMAIL, FACEBOOK, navigation, PHONE, PHONE_TEL } from "@/lib/site";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,7 +22,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
               </Link>
             ))}
           </nav>
-          <Button variant="signal" size="sm" asChild className="hidden md:inline-flex"><Link to="/kontakt"><Mail /> Skontaktuj się</Link></Button>
+          <div className="flex items-center gap-5">
+            <a href={PHONE_TEL} className="inline-flex items-center gap-2 whitespace-nowrap font-display text-[11px] tracking-wide text-muted-foreground transition-colors hover:text-primary"><Phone size={13} /> {PHONE}</a>
+            <Button variant="signal" size="sm" asChild className="hidden md:inline-flex"><Link to="/kontakt"><Mail /> Skontaktuj się</Link></Button>
+          </div>
           <Button variant="glass" size="icon" className="md:hidden" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Zamknij menu" : "Otwórz menu"} aria-expanded={menuOpen}>
             {menuOpen ? <X /> : <Menu />}
           </Button>
@@ -44,7 +47,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto grid max-w-7xl gap-9 px-5 md:grid-cols-[1fr_auto] md:items-end lg:px-8">
           <div><BrandLogo /><p className="mt-4 max-w-md text-sm leading-6 text-muted-foreground">Precyzyjna elektronika i konkretne wsparcie IT — lokalnie, w Kostrzynie nad Odrą.</p></div>
           <div className="md:text-right">
-            <div className="flex flex-wrap gap-5 text-sm md:justify-end"><a className="footer-link" href={`mailto:${EMAIL}`}><Mail size={15} /> E-mail</a><a className="footer-link" href={FACEBOOK} target="_blank" rel="noreferrer"><Facebook size={15} /> Facebook</a></div>
+            <div className="flex flex-wrap gap-5 text-sm md:justify-end"><a className="footer-link" href={PHONE_TEL}><Phone size={15} /> {PHONE}</a><a className="footer-link" href={`mailto:${EMAIL}`}><Mail size={15} /> E-mail</a><a className="footer-link" href={FACEBOOK} target="_blank" rel="noreferrer"><Facebook size={15} /> Facebook</a></div>
             <p className="mt-5 font-display text-[10px] text-muted-foreground">© 2026 MIKROSERWIS / KOSTRZYN NAD ODRĄ</p>
           </div>
         </div>
