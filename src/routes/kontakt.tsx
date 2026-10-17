@@ -43,6 +43,7 @@ function ContactPage() {
           <aside>
             <p className="font-display text-[10px] uppercase text-muted-foreground">Bezpośredni kontakt</p>
             <div className="mt-5 border-t border-border">
+              <a href={PHONE_TEL} className="contact-row"><Phone size={19} /><span>{PHONE}</span><ArrowRight size={16} className="ml-auto" /></a>
               <a href={`mailto:${EMAIL}`} className="contact-row"><Mail size={19} /><span className="break-all">{EMAIL}</span><ArrowRight size={16} className="ml-auto" /></a>
               <div className="contact-row"><MapPin size={19} /><span>Kostrzyn nad Odrą</span></div>
               <a href={FACEBOOK} target="_blank" rel="noreferrer" className="contact-row"><Facebook size={19} /><span>Facebook MikroSerwis</span><ArrowRight size={16} className="ml-auto" /></a>
