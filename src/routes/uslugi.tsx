@@ -6,13 +6,19 @@ import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/uslugi")({
   component: ServicesPage,
-  head: () => ({ meta: [
-    { title: "Usługi SMD i serwis sprzętu | MikroSerwis" },
-    { name: "description", content: "Wylutowywanie i montaż elementów SMD, naprawa płyt głównych, diagnostyka elektroniki oraz serwis komputerów i konsol." },
-    { property: "og:title", content: "Usługi naprawy elektroniki — MikroSerwis" },
-    { property: "og:description", content: "Konkretne usługi SMD, diagnostyka oraz serwis komputerów i konsol w Kostrzynie nad Odrą." },
-    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
-  ]}),
+  staticData: { sitemap: true },
+  head: () => ({
+    meta: [
+      { title: "Usługi serwisowe SMD i IT | Mikroserwis Kostrzyn" },
+      { name: "description", content: "Wylutowywanie i montaż SMD, naprawa płyt głównych, wymiana złączy, serwis komputerów i konsol. Kostrzyn nad Odrą i okolice z dojazdem." },
+      { property: "og:title", content: "Usługi naprawy elektroniki — Mikroserwis" },
+      { property: "og:description", content: "Konkretne usługi SMD, diagnostyka oraz serwis komputerów i konsol w Kostrzynie nad Odrą." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://mikroserwis-kostrzyn.pl/uslugi" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://mikroserwis-kostrzyn.pl/uslugi" }],
+  }),
 });
 
 const services = [

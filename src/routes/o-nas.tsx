@@ -6,13 +6,19 @@ import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/o-nas")({
   component: AboutPage,
-  head: () => ({ meta: [
-    { title: "O MikroSerwis | Precyzja i lokalna pomoc IT" },
-    { name: "description", content: "Poznaj sposób pracy MikroSerwis: rzetelna diagnostyka, precyzyjne naprawy SMD i pomoc IT w Kostrzynie nad Odrą." },
-    { property: "og:title", content: "O nas — MikroSerwis Kostrzyn nad Odrą" },
-    { property: "og:description", content: "Lokalny serwis, konkretna diagnoza i naprawy elektroniki bez zgadywania." },
-    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
-  ]}),
+  staticData: { sitemap: true },
+  head: () => ({
+    meta: [
+      { title: "O nas | Mikroserwis Kostrzyn nad Odrą" },
+      { name: "description", content: "Poznaj Mikroserwis: rzetelna diagnostyka, precyzyjne naprawy SMD i pomoc IT z dojazdem w Kostrzynie nad Odrą, Dąbroszynie, Witnicy i okolicach." },
+      { property: "og:title", content: "O nas — Mikroserwis Kostrzyn nad Odrą" },
+      { property: "og:description", content: "Lokalny serwis, konkretna diagnoza i naprawy elektroniki bez zgadywania." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://mikroserwis-kostrzyn.pl/o-nas" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://mikroserwis-kostrzyn.pl/o-nas" }],
+  }),
 });
 
 const standards = [
