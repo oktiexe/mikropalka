@@ -23,7 +23,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             ))}
           </nav>
           <div className="flex items-center gap-5">
-            <a href={PHONE_TEL} className="hidden font-display text-xs tracking-wide text-muted-foreground transition-colors hover:text-primary sm:inline-flex sm:items-center sm:gap-2"><Phone size={14} /> {PHONE}</a>
+            <a href={PHONE_TEL} className="inline-flex items-center gap-2 whitespace-nowrap font-display text-[11px] tracking-wide text-muted-foreground transition-colors hover:text-primary"><Phone size={13} /> {PHONE}</a>
             <Button variant="signal" size="sm" asChild className="hidden md:inline-flex"><Link to="/kontakt"><Mail /> Skontaktuj się</Link></Button>
           </div>
           <Button variant="glass" size="icon" className="md:hidden" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Zamknij menu" : "Otwórz menu"} aria-expanded={menuOpen}>
