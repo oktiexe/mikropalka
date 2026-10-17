@@ -7,14 +7,30 @@ import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "MikroSerwis | Serwis elektroniki SMD — Kostrzyn nad Odrą" },
-      { name: "description", content: "Naprawa elektroniki SMD, komputerów i konsol oraz wsparcie IT z dojazdem w Kostrzynie nad Odrą." },
-      { property: "og:title", content: "MikroSerwis — elektronika pod kontrolą" },
+      { title: "Mikroserwis — naprawa komputerów i elektroniki Kostrzyn" },
+      { name: "description", content: "Naprawa komputerów, laptopów i elektroniki SMD w Kostrzynie nad Odrą. Dojeżdżamy też do Dąbroszyna, Kamienia Małego, Witnicy i Białcza." },
+      { property: "og:title", content: "Mikroserwis — elektronika pod kontrolą" },
       { property: "og:description", content: "Lokalny serwis elektroniki SMD i wsparcie IT w Kostrzynie nad Odrą." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://mikroserwis-kostrzyn.pl/" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://mikroserwis-kostrzyn.pl/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Mikroserwis",
+          url: "https://mikroserwis-kostrzyn.pl",
+          email: "mikroserwis.kostrzyn@gmail.com",
+          areaServed: ["Kostrzyn nad Odrą", "Dąbroszyn", "Kamień Mały", "Witnica", "Białcz"],
+        }),
+      },
     ],
   }),
 });

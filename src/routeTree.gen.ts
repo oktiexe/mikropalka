@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as ONasRouteImport } from './routes/o-nas'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as UslugiRouteImport } from './routes/uslugi'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const ONasRoute = ONasRouteImport.update({
   path: '/o-nas',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UslugiRoute = UslugiRouteImport.update({
   id: '/uslugi',
   path: '/uslugi',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/kontakt': typeof KontaktRoute
   '/o-nas': typeof ONasRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uslugi': typeof UslugiRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/kontakt': typeof KontaktRoute
   '/o-nas': typeof ONasRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uslugi': typeof UslugiRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/kontakt': typeof KontaktRoute
   '/o-nas': typeof ONasRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/uslugi': typeof UslugiRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/kontakt' | '/o-nas' | '/uslugi'
+  fullPaths: '/' | '/kontakt' | '/o-nas' | '/sitemap.xml' | '/uslugi'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/kontakt' | '/o-nas' | '/uslugi'
-  id: '__root__' | '/' | '/kontakt' | '/o-nas' | '/uslugi'
+  to: '/' | '/kontakt' | '/o-nas' | '/sitemap.xml' | '/uslugi'
+  id: '__root__' | '/' | '/kontakt' | '/o-nas' | '/sitemap.xml' | '/uslugi'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   KontaktRoute: typeof KontaktRoute
   ONasRoute: typeof ONasRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UslugiRoute: typeof UslugiRoute
 }
 
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ONasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/uslugi': {
       id: '/uslugi'
       path: '/uslugi'
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   KontaktRoute: KontaktRoute,
   ONasRoute: ONasRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   UslugiRoute: UslugiRoute,
 }
 export const routeTree = rootRouteImport

@@ -10,13 +10,19 @@ import { EMAIL, FACEBOOK } from "@/lib/site";
 
 export const Route = createFileRoute("/kontakt")({
   component: ContactPage,
-  head: () => ({ meta: [
-    { title: "Kontakt i wycena | MikroSerwis Kostrzyn nad Odrą" },
-    { name: "description", content: "Skontaktuj się z MikroSerwis w sprawie diagnostyki SMD, naprawy elektroniki, komputera lub konsoli." },
-    { property: "og:title", content: "Kontakt — MikroSerwis" },
-    { property: "og:description", content: "Opisz usterkę i rozpocznij diagnozę sprzętu w MikroSerwis." },
-    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
-  ]}),
+  staticData: { sitemap: true },
+  head: () => ({
+    meta: [
+      { title: "Kontakt i wycena | Mikroserwis Kostrzyn nad Odrą" },
+      { name: "description", content: "Skontaktuj się z Mikroserwis w sprawie naprawy komputera, laptopa lub elektroniki. Kostrzyn nad Odrą, Dąbroszyn, Kamień Mały, Witnica, Białcz." },
+      { property: "og:title", content: "Kontakt — Mikroserwis" },
+      { property: "og:description", content: "Opisz usterkę i rozpocznij diagnozę sprzętu w Mikroserwis." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://mikroserwis-kostrzyn.pl/kontakt" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://mikroserwis-kostrzyn.pl/kontakt" }],
+  }),
 });
 
 function ContactPage() {
