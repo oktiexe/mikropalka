@@ -27,6 +27,7 @@ export const Route = createFileRoute("/")({
           "@type": "LocalBusiness",
           name: "Mikroserwis",
           url: "https://mikroserwis-kostrzyn.pl",
+          telephone: "+48727718888",
           email: "mikroserwis.kostrzyn@gmail.com",
           areaServed: ["Kostrzyn nad Odrą", "Dąbroszyn", "Kamień Mały", "Witnica", "Białcz"],
         }),

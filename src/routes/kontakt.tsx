@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Facebook, Mail, MapPin, Send } from "lucide-react";
+import { ArrowRight, Facebook, Mail, MapPin, Phone, Send } from "lucide-react";
 import type { FormEvent } from "react";
 
 import { PageIntro, SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { EMAIL, FACEBOOK } from "@/lib/site";
+import { EMAIL, FACEBOOK, PHONE, PHONE_TEL } from "@/lib/site";
 
 export const Route = createFileRoute("/kontakt")({
   component: ContactPage,

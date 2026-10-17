@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Facebook, Mail, Menu, X } from "lucide-react";
+import { ArrowRight, Facebook, Mail, Menu, Phone, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
 
 import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
-import { EMAIL, FACEBOOK, navigation } from "@/lib/site";
+import { EMAIL, FACEBOOK, navigation, PHONE, PHONE_TEL } from "@/lib/site";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
